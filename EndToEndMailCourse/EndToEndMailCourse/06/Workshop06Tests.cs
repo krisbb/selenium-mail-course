@@ -16,9 +16,16 @@ namespace EndToEndMailCourse._06
         public void ShouldTestOnMobile()
         {
             #region TEST CODE
+            var options = new ChromeOptions();
+            options.EnableMobileEmulation(new ChromeMobileEmulationDeviceSettings()
+            {
+                EnableTouchEvents = true,
+                Height = 640,
+                Width =  360,
+                UserAgent = "Chrome"
+            });
 
-            var driver = new ChromeDriver();
-
+            var driver = new ChromeDriver(options);
             #endregion
 
             driver.Navigate().GoToUrl(testUrl);
@@ -41,8 +48,15 @@ namespace EndToEndMailCourse._06
         public void ShouldTestOnDesktop()
         {
             #region TEST CODE
-
-            var driver = new ChromeDriver();
+            var options = new ChromeOptions();
+            options.EnableMobileEmulation(new ChromeMobileEmulationDeviceSettings()
+            {
+                EnableTouchEvents = true,
+                Width = 1024,
+                Height = 768,
+                UserAgent = "Chrome"
+            });
+            var driver = new ChromeDriver(options);
 
             #endregion
 
